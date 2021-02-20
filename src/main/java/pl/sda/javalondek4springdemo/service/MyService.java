@@ -15,4 +15,7 @@ public class MyService {
     public MyService(MyRepository myRepository) {
         this.myRepository = myRepository;
     }
+
+    public String convertToUpperCase(String name) {
+    }
 }
