@@ -43,4 +43,13 @@ public class BookService {
         logger.info("book found for id: [{}] is [{}]", id, result);
         return result;
     }
+
+    public Book saveBook(Book toSave) {
+
+        var max = findAllBooks().stream().mapToLong(book -> book.getId()).max().orElse(1L);
+        toSave.setId(++max);
+        bookRepository.findAllBooks().add(toSave);
+        logger.info("saved book: [{}]", toSave);
+        return toSave;
+    }
 }
