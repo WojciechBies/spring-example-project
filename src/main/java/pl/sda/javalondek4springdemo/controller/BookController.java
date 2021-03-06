@@ -54,4 +54,21 @@ public class BookController {
         logger.info("deleting boo by id: [{}]", id);
         bookService.deleteBookById(id);
     }
+
+    // full update (replace)
+    @PutMapping("/{id}")
+    public Book replaceBook(@PathVariable("id") Long id, @RequestBody Book toReplace) {
+        logger.info("Replacing book with new one: [{}]", toReplace);
+
+        return bookService.replaceBook(id, toReplace);
+
+    }
+
+    // update (partial)
+    @PatchMapping("/{id}")
+    public Book updateBook(@PathVariable("id") Long id, @RequestBody Book toUpdate) {
+        logger.info("updating book with new attributes: [{}]", toUpdate);
+
+        return bookService.updateBookWithAttributes(id, toUpdate);
+    }
 }
