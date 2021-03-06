@@ -13,18 +13,21 @@ public class MyService {
 
     private static final Logger logger = LoggerFactory.getLogger(MyService.class);
 
+    // @Autowired - do not use on field!!!! It makes sense only in tests!!!
     private MyRepository myRepository;
 
     public MyService(MyRepository myRepository) {
+        logger.info("MyService(MyRepository myRepository)");
         this.myRepository = myRepository;
     }
 
     public MyService() {
+        logger.info("MyService()");
     }
 
     @Autowired
     public void setMyRepository(MyRepository myRepository) {
-        logger.info("setting my repository dependency into service");
+        logger.info("setting my repository dependency into my service");
         this.myRepository = myRepository;
     }
 

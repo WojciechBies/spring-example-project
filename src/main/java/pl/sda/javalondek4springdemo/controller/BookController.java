@@ -12,6 +12,11 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookController {
 
+    // TODO: kolejność budowania aplikacji - kroki:)
+    // dtos
+    // exceptions
+    // baza - entities
+
     private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
     private final BookService bookService;
@@ -22,23 +27,48 @@ public class BookController {
 
     @GetMapping
     public List<Book> getAllBooks() {
-        logger.info("getAllBooks");
+
+        logger.info("getAllBooks()");
 
         return bookService.findAllBooks();
     }
 
+    // /books/1
+    // /books/101
     @GetMapping("/{id}")
-    public Book getBookById(@PathVariable("id") long id) {
-        logger.info("find book by is: [{}]", id);
+    public Book getBookById(@PathVariable("id") Long id) {
+        logger.info("find book by id: [{}]", id);
 
         return bookService.findBookById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public Book addBook(@RequestBody Book toSave) {
         logger.info("adding book: [{}]", toSave);
 
         return bookService.saveBook(toSave);
+    }
 
+    @DeleteMapping("/{id}")
+    public void deleteBookById(@PathVariable("id") Long id) {
+        logger.info("deleting boo by id: [{}]", id);
+        bookService.deleteBookById(id);
+    }
+
+    // full update (replace)
+    @PutMapping("/{id}")
+    public Book replaceBook(@PathVariable("id") Long id, @RequestBody Book toReplace) {
+        logger.info("Replacing book with new one: [{}]", toReplace);
+
+        return bookService.replaceBook(id, toReplace);
+
+    }
+
+    // update (partial)
+    @PatchMapping("/{id}")
+    public Book updateBook(@PathVariable("id") Long id, @RequestBody Book toUpdate) {
+        logger.info("updating book with new attributes: [{}]", toUpdate);
+
+        return bookService.updateBookWithAttributes(id, toUpdate);
     }
 }

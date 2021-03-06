@@ -15,8 +15,7 @@ public class JavaLondek4SpringDemoApplication {
 
     public static void dependencyInjectionFAQ() {
         MyRepository myRepository = new MyRepository();
-        MyService myService = new MyService(myRepository);
-        MyFirstRestController myFirstRestController = new MyFirstRestController(myService); // dependency injections
-
+        MyService myService = new MyService(myRepository); // dependency injection
+        MyFirstRestController myFirstRestController = new MyFirstRestController(myService);
     }
 }
