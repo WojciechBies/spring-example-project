@@ -2,29 +2,33 @@ package pl.sda.javalondek4springdemo.model;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @Embedded
     private Address address;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "teacher")
     private List<Course> courseList;
 
     public Teacher() {
     }
 
-    public UUID getId() {
+    public Teacher(Address address, List<Course> courseList) {
+        this.address = address;
+        this.courseList = courseList;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,5 +46,14 @@ public class Teacher {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", address=" + address +
+                ", courseList=" + courseList +
+                '}';
     }
 }

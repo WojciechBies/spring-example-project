@@ -11,11 +11,18 @@ public class Course {
 
     private String courseName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "TEACHER_FOREIGN_ID", referencedColumnName = "ID")
     private Teacher teacher;
 
     public Course() {
         //empty
+    }
+
+    public Course(String courseName, Teacher teacher) {
+        this.id = id;
+        this.courseName = courseName;
+        this.teacher = teacher;
     }
 
     public Long getId() {
@@ -40,5 +47,14 @@ public class Course {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", courseName='" + courseName + '\'' +
+                ", teacher=" +
+                '}';
     }
 }
