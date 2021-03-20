@@ -1,8 +1,8 @@
-INSERT INTO BOOKS (IMIE, SURNAME, TYTUL)
-VALUES ('Henryk', 'Sienkiewicz', 'Pan Wolodyjowski');
-
-INSERT INTO BOOKS (IMIE, SURNAME, TYTUL)
+INSERT INTO BOOKS (IMIE, SURNAME, TYTUŁ)
 VALUES ('Henryk', 'Sienkiewicz', 'Potop');
 
-INSERT INTO BOOKS (IMIE, SURNAME, TYTUL)
+INSERT INTO BOOKS (IMIE, SURNAME, TYTUŁ)
+VALUES ('Henryk', 'Sienkiewicz', 'Pan Wołodyjowski');
+
+INSERT INTO BOOKS (IMIE, SURNAME, TYTUŁ)
 VALUES ('Henryk', 'Sienkiewicz', 'Ogniem i mieczem');

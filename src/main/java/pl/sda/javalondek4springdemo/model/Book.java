@@ -1,7 +1,5 @@
 package pl.sda.javalondek4springdemo.model;
 
-// import org.hibernate.annotations.Entity;
-
 import javax.persistence.*;
 
 @Entity(name = "books")
@@ -18,7 +16,7 @@ public class Book {
     @Column
     private String surname;
 
-    @Column(name = "tytul")
+    @Column(name = "tytuł")
     private String title;
 
     public Book(Long id, String name, String surname, String title) {
