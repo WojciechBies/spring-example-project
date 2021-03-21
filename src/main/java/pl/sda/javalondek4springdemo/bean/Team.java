@@ -8,8 +8,8 @@ public class Team {
 
     private final Player whichPlayer;
 
-    public Team(@Qualifier(value = "buffon") Player whichPlayer) {
-        System.out.println("Injected class" + whichPlayer.getClass());
+    public Team(@Qualifier("buffon") Player whichPlayer) {
+        System.out.println("Injected class: " + whichPlayer.getClass());
         this.whichPlayer = whichPlayer;
     }
 }

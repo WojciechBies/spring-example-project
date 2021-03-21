@@ -9,8 +9,10 @@ import java.util.Map;
 @Component
 public class AllPlayersTeam {
 
+    private static final Logger logger = LoggerFactory.getLogger(AllPlayersTeam.class);
+
     private final Map<String, Player> allPlayers;
-    private final Logger logger = LoggerFactory.getLogger(AllPlayersTeam.class);
+
 
     public AllPlayersTeam(Map<String, Player> allPlayers) {
         this.allPlayers = allPlayers;
