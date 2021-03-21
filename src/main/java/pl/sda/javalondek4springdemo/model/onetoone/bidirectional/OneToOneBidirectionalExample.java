@@ -26,21 +26,30 @@ public class OneToOneBidirectionalExample implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Owner owner = new Owner();
-        owner.setFirstName("maniek");
-        owner.setLastName("p.");
-
-        Cat mruczek = new Cat();
-        mruczek.setName("mruczek");
-
-        catRepository.save(mruczek);
-        logger.info("mruczek id after save: [{}]", mruczek.getId());
-
-        owner.setCat(mruczek);
-        ownerRepository.save(owner);
-
-        mruczek.setOwner(owner);
+//        Owner owner = new Owner();
+//        owner.setFirstName("maniek");
+//        owner.setLastName("p.");
+//
+//        Cat mruczek = new Cat();
+//        mruczek.setName("mruczek");
+//
+//        catRepository.save(mruczek);
+//        logger.info("mruczek id after save: [{}]", mruczek.getId());
+//
+//        owner.setCat(mruczek);
+////        ownerRepository.save(owner);
+//
+//        mruczek.setOwner(owner);
 
         // save to db
+        Owner olaf = new Owner();
+        olaf.setFirstName("olaf");
+        olaf.setLastName("olaf");
+
+        Cat lobuz = new Cat();
+        lobuz.setName("lobuz");
+        lobuz.setOwner(olaf);
+        olaf.setCat(lobuz);
+        ownerRepository.save(olaf);
     }
 }

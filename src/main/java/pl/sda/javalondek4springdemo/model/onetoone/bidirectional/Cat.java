@@ -14,7 +14,8 @@ public class Cat {
 
     private String name;
 
-    @OneToOne
+    @OneToOne()
+    @JoinColumn(name = "MY_OWNER_ID", referencedColumnName = "IDENTIFIER")
     private Owner owner;
 
     public Cat() {

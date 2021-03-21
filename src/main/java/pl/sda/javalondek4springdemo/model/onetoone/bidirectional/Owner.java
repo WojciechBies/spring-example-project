@@ -10,24 +10,24 @@ public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long identifier;
 
     private String firstName;
 
     private String lastName;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "owner")
     private Cat cat;
 
     public Owner() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdentifier() {
+        return identifier;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdentifier(Long id) {
+        this.identifier = id;
     }
 
     public String getFirstName() {
