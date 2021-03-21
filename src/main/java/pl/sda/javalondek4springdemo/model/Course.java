@@ -1,8 +1,16 @@
 package pl.sda.javalondek4springdemo.model;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "COURSES")
 public class Course {
 
     @Id
@@ -12,17 +20,15 @@ public class Course {
     private String courseName;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "TEACHER_FOREIGN_ID", referencedColumnName = "ID")
+    // SQL names - use upper cases
+    // name = foreign key name in COURSES table (default: field_name + _ + ID -> TEACHER_ID)
+    // use custom name when column in database has some non-javish name :)
+    // referencedColumnName refers to primary key of Teacher
+    @JoinColumn(referencedColumnName = "ID")
     private Teacher teacher;
 
     public Course() {
-        //empty
-    }
-
-    public Course(String courseName, Teacher teacher) {
-        this.id = id;
-        this.courseName = courseName;
-        this.teacher = teacher;
+        // empty
     }
 
     public Long getId() {
@@ -52,9 +58,9 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "id=" + id +
-                ", courseName='" + courseName + '\'' +
-                ", teacher=" +
-                '}';
+            "id=" + id +
+            ", courseName='" + courseName + '\'' +
+            ", teacher=..." +
+            '}';
     }
 }

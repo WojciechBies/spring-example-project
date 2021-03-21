@@ -1,4 +1,4 @@
-package pl.sda.javalondek4springdemo.model.onetoone.bidirectional;
+package pl.sda.javalondek4springdemo.model.onetoone.unidiretional;
 
 import org.springframework.context.annotation.Profile;
 
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Profile("onetoone-birectional")
+@Profile("onetoone-unidirectional")
 @Entity
 // Columns in db:
 // ID, NAME, MY_OWNER_ID
@@ -20,13 +20,6 @@ public class Cat {
     private Long id;
 
     private String name;
-
-    @OneToOne
-    // @JoinColumn attributes
-    // name - name of foreign key in CAT table
-    // referencedColumnName - name of primary key from OWNER table
-    @JoinColumn(name = "MY_OWNER_ID", referencedColumnName = "IDENTIFIER")
-    private Owner owner;
 
     public Cat() {
     }
@@ -45,13 +38,5 @@ public class Cat {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
     }
 }

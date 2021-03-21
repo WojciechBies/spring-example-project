@@ -1,13 +1,22 @@
 package pl.sda.javalondek4springdemo.model;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
+@Table(name = "TEACHERS")
 public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Basic
     private Long id;
 
     @Embedded
@@ -17,11 +26,6 @@ public class Teacher {
     private List<Course> courseList;
 
     public Teacher() {
-    }
-
-    public Teacher(Address address, List<Course> courseList) {
-        this.address = address;
-        this.courseList = courseList;
     }
 
     public Long getId() {
@@ -51,9 +55,9 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "id=" + id +
-                ", address=" + address +
-                ", courseList=" + courseList +
-                '}';
+            "id=" + id +
+            ", address=" + address +
+            ", courseList=" + courseList +
+            '}';
     }
 }

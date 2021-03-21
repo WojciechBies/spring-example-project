@@ -4,7 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.List;
+// TODO:
+// pictures of mappings..
+// UUID
+// jpa rules:)
+// relations directions
+// query
+// mysql
 @Entity
 public class Client {
 
@@ -13,6 +22,10 @@ public class Client {
     private Long id;
 
     private String clientName;
+
+    @OneToMany
+    @JoinColumn(name = "CLIENT_ID", referencedColumnName = "ID")
+    private List<Order> orders;
 
     public Client() {
     }

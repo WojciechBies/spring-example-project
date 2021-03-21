@@ -14,15 +14,14 @@ public class HardwareHsmModule implements HsmModule, CommandLineRunner {
 
     @Override
     public String encryptPassword(String password) {
-
         logger.info("very complex operation with real HSM device");
-        logger.info("trying to connect to real device.....");
+        logger.info("trying to connect to real device....");
 
         return null;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("hsm module: [{}]", HardwareHsmModule.class.getSimpleName());
+        logger.info("hsm module: [{}}", HardwareHsmModule.class.getSimpleName());
     }
 }

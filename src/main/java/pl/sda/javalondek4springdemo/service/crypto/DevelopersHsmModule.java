@@ -6,7 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-
 @Profile({"!prod", "!test"})
 @Service
 public class DevelopersHsmModule implements HsmModule, CommandLineRunner {
@@ -16,7 +15,7 @@ public class DevelopersHsmModule implements HsmModule, CommandLineRunner {
     @Override
     public String encryptPassword(String password) {
 
-        logger.info("using developers version of hsm module");
+        logger.info("using developers' version of hsm module");
 
         return password.toUpperCase();
     }

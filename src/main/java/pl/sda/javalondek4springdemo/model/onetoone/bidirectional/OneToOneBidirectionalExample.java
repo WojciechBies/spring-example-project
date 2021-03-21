@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import pl.sda.javalondek4springdemo.repository.onetoone.bidirectional.CatRepository;
-import pl.sda.javalondek4springdemo.repository.onetoone.bidirectional.OwnerRepository;
+import pl.sda.javalondek4springdemo.repository.onetoone.CatRepository;
+import pl.sda.javalondek4springdemo.repository.onetoone.OwnerRepository;
 
-@Profile("onetoone-bidirectional")
+@Profile("onetoone-birectional")
 @Component
 public class OneToOneBidirectionalExample implements CommandLineRunner {
 
@@ -25,31 +25,33 @@ public class OneToOneBidirectionalExample implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Owner me = new Owner();
+        me.setFirstName("maniek");
+        me.setLastName("p.");
 
-//        Owner owner = new Owner();
-//        owner.setFirstName("maniek");
-//        owner.setLastName("p.");
-//
-//        Cat mruczek = new Cat();
-//        mruczek.setName("mruczek");
-//
+        Cat mruczek = new Cat();
+        mruczek.setName("mruczek");
+
+        // this commented source code can be used only when there's no cascade!!!
 //        catRepository.save(mruczek);
-//        logger.info("mruczek id after save: [{}]", mruczek.getId());
+//        logger.info("mruczek was saved to db with id: [{}]", mruczek.getId());
+////
+//        me.setCat(mruczek);
+//        ownerRepository.save(me);
 //
-//        owner.setCat(mruczek);
-////        ownerRepository.save(owner);
-//
-//        mruczek.setOwner(owner);
+//        mruczek.setOwner(me);
+//        catRepository.save(mruczek);
+//        // saving without cascade is nightmare, but sometimes is necessary :(
 
-        // save to db
         Owner olaf = new Owner();
         olaf.setFirstName("olaf");
-        olaf.setLastName("olaf");
+        olaf.setLastName("l");
 
-        Cat lobuz = new Cat();
-        lobuz.setName("lobuz");
-        lobuz.setOwner(olaf);
-        olaf.setCat(lobuz);
+        Cat łobuz = new Cat();
+        łobuz.setName("lobuz");
+        łobuz.setOwner(olaf);
+        olaf.setCat(łobuz);
+
         ownerRepository.save(olaf);
     }
 }
