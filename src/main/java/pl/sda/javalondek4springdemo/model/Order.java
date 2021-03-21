@@ -3,6 +3,7 @@ package pl.sda.javalondek4springdemo.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "ORDERS")
 public class Order {
 
     @Id
